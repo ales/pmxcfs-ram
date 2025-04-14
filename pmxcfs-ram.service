@@ -11,7 +11,7 @@ RefuseManualStop=true
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/pmxcfs-ram.sh
+ExecStart=/usr/local/bin/pmxcfs-ram.sh
 NotifyAccess=all
 
 [Install]

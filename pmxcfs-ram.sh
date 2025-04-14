@@ -112,12 +112,12 @@ function run_loop() {
 
 function start () {
 
-	mount=$(is_mounted "$VARLIBDIR")
+	mount=$(is_mounted "$VARLIBDIR_PATH")
 	cluster_running=$(is_service_running "$PVE_CLUSTER_SERVICE_NAME")
 
 	echo "Checking conditions to start the service"
 	if [[ $mount == TRUE ]] ; then
-		echo "Cannot start service, "$VARLIBDIR" already mounted. Exit"
+		echo "Cannot start service, "$VARLIBDIR_PATH" already mounted. Exit"
 		exit 1
 	fi
 

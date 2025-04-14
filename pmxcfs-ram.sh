@@ -156,18 +156,15 @@ function start () {
 
 	#Since pmxcfs-ram.service is a service Type=Notify. The main process is the daemon itself.
 	run_loop
-
-	}
+}
 
 
 function stop () {
-
 	#Save latest data
 	persist_data
 
 	#Stop myself and the loop
 	exit 0
-
 }
 
 

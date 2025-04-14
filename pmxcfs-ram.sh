@@ -87,9 +87,8 @@ function activate_service () {
 
 
 function persist_data () {
-	#Write data stored in RAM to disk
-	rm "$VARLIBDIR_PERSISTENT_PATH"/*
-	cp -r "$VARLIBDIR_RAM_PATH"/* "$VARLIBDIR_PERSISTENT_PATH"
+	# Sync data stored in RAM to disk
+	rsync -a "$VARLIBDIR_RAM_PATH" "$VARLIBDIR_PERSISTENT_PATH"
 }
 
 

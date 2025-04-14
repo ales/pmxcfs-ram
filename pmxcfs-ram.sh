@@ -136,7 +136,7 @@ function start () {
 	if [[ ! -d $VARLIBDIR_PERSISTENT_PATH ]] ; then
 		echo "First time running the service, creating persistent folder with current PVE configuration"
 		mkdir -p "$VARLIBDIR_PERSISTENT_PATH" || exit 1
-		cp -r "$VARLIBDIR_PATH"/* "$VARLIBDIR_PERSISTENT_PATH" || exit 1
+		rsync -a "$VARLIBDIR_PATH"/ "$VARLIBDIR_PERSISTENT_PATH" || exit 1
 	fi
 
 
@@ -144,7 +144,7 @@ function start () {
 	mkdir "$VARLIBDIR_RAM_PATH" || ( echo "Cannot create in RAM directory. Exit" ; exit 1)
 
 	echo "Copying PVE config from "$VARLIBDIR_PERSISTENT_PATH" to RAM"
-	cp -r "$VARLIBDIR_PERSISTENT_PATH"/* "$VARLIBDIR_RAM_PATH"
+	rsync -a "$VARLIBDIR_PERSISTENT_PATH"/ "$VARLIBDIR_RAM_PATH"
 
 	echo "Mounting RAM folder to $VARLIBDIR_PATH"
 	#After this point Proxmox will write to $VARLIBDIR_PATH but actually this path is mounted to $VARLIBDIR_RAM_PATH (in memory)
